@@ -15,7 +15,6 @@ spark = SparkSession.builder.appName("PythonSQL").master("local[*]").getOrCreate
 
 # 初期表示データの読み込み
 df = spark.sql("SELECT * FROM simple_table")
-df.createOrReplaceTempView("simple_table")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
