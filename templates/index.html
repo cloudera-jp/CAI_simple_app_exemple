@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Spark SQL フィルタリング アプリ</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        form { margin-bottom: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Spark SQL フィルタリング</h1>
+    <p>都市名を入力して、データをフィルタリングしてください。</p>
+
+    <form method="POST">
+        <label for="city_filter">カラム3:</label>
+        <input type="text" id="city_filter" name="city_filter" value="{{ filter_value }}" placeholder="カラム3の値">
+        <button type="submit">フィルタリング</button>
+    </form>
+
+    <hr>
+
+    {% if results %}
+        <h2>フィルタリング結果</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>カラム1</th>
+                    <th>カラム2</th>
+                    <th>カラム3</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                <tr>
+                    <td>{{ row.col1 }}</td>
+                    <td>{{ row.col2 }}</td>
+                    <td>{{ row.col3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif request.method == "POST" %}
+        <p>該当するデータが見つかりませんでした。</p>
+    {% endif %}
+
+</body>
+</html>
