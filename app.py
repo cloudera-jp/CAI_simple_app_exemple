@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import os
-import sys
-import subprocess
 
 from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
@@ -37,8 +35,6 @@ def index():
 
 # メイン
 if __name__ == '__main__':
-    app.static_folder = os.environ['HOME'] + '/static'
-    # app.template_folder = os.environ['HOME'] + '/templates'
 
     try:
         app.run(host = '127.0.0.1', port = int(os.environ['CDSW_APP_PORT']))
