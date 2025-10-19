@@ -14,6 +14,8 @@ This small exmple shows how CAI apps interact with external tables on its datala
 2. **Check the SparkSQL connection setting on your project on CAI**
  - Confirm the path where the external warehouse directory points.
  - You need to create the external table located under the path.
+ - To confirm the path, go to "Project Settings" on your CAI project, check the "Spark Data Lake" setting on "Data Connections" menu.
+![Spark Data Lake connection setting](images/spark_sql_connection.png)
 
 3. **Create the external table**
  - This app expects "simple_external" as the table name that has 3 columns named col1, col2 and col3.
